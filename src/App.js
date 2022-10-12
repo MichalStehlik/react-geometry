@@ -1,24 +1,26 @@
-import logo from './logo.svg';
+import { Routes, Route } from "react-router-dom"
+
+import Title from "./pages/Front/Title"
+import Circle from "./pages/Front/Circle"
+import Rectangle from "./pages/Front/Rectangle"
+import NotFound from "./pages/Special/NotFound"
+import { FrontLayout } from "./pages/Front"
+
 import './App.css';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <Routes>
+      <Route path='/' element={<FrontLayout />}>
+        <Route index element={<Title />} />
+        <Route path="circle/:radius" element={<Circle />} />
+        <Route path="circle" element={<Circle />} />
+        <Route path="rectangle" element={<Rectangle />} />
+      </Route>
+      <Route path="*" element={<NotFound />} />
+    </Routes>
+    </>
   );
 }
 
